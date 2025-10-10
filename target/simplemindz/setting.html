@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings</title>
+    <style>
+        :root {
+          --primary: #3498db;
+          --secondary: #2c3e50;
+          --light-bg: #f9f9f9;
+          --dark-bg: #1e1e1e;
+          --light-text: #333;
+          --dark-text: #f9f9f9;
+        }
+
+        body {
+          font-family: "Segoe UI", sans-serif;
+          margin: 0;
+          padding: 0;
+          background: var(--light-bg);
+          color: var(--light-text);
+          transition: all 0.3s;
+        }
+
+        body.dark {
+          background: var(--dark-bg);
+          color: var(--dark-text);
+        }
+
+        .settings-container {
+          max-width: 600px;
+          margin: 50px auto;
+          background: white;
+          padding: 25px;
+          border-radius: 15px;
+          box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+          transition: background 0.3s;
+        }
+
+        body.dark .settings-container {
+          background: #2c2c2c;
+        }
+
+        h2 {
+          text-align: center;
+          margin-bottom: 20px;
+          color: var(--primary);
+        }
+
+        .setting {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 12px 0;
+          border-bottom: 1px solid #ddd;
+        }
+
+        body.dark .setting {
+          border-color: #444;
+        }
+
+        .setting label {
+          font-size: 16px;
+        }
+
+        .setting input[type="checkbox"] {
+          transform: scale(1.3);
+          cursor: pointer;
+        }
+
+        .setting select {
+          padding: 6px 8px;
+          border-radius: 5px;
+          border: 1px solid #aaa;
+          cursor: pointer;
+        }
+
+        .btn {
+          display: block;
+          width: 100%;
+          padding: 12px;
+          background: var(--primary);
+          border: none;
+          color: white;
+          font-size: 16px;
+          border-radius: 8px;
+          cursor: pointer;
+          margin-top: 20px;
+          transition: background 0.3s;
+        }
+
+        .btn:hover {
+          background: #2178b8;
+        }
+
+        .result {
+          text-align: center;
+          margin-top: 15px;
+          font-weight: bold;
+          color: green;
+        }
+    </style>
+</head>
+<body>
+<div class="settings-container">
+    <h2>⚙️ App Settings</h2>
+
+    <div class="setting">
+        <label for="darkMode">🌙 Dark Mode</label>
+        <input type="checkbox" id="darkMode">
+    </div>
+
+    <div class="setting">
+        <label for="lang">🌐 Language</label>
+        <select id="lang">
+            <option value="en">English</option>
+            <option value="ta">தமிழ்</option>
+            <option value="hi">हिंदी</option>
+        </select>
+    </div>
+
+    <div class="setting">
+        <label for="notify">🔔 Notifications</label>
+        <input type="checkbox" id="notify" checked>
+    </div>
+
+    <div class="setting">
+        <label for="privacy">🔒 Privacy Mode</label>
+        <input type="checkbox" id="privacy">
+    </div>
+
+    <div class="setting">
+        <label for="fontSize">🔤 Font Size</label>
+        <select id="fontSize">
+            <option value="small">Small</option>
+            <option value="medium" selected>Medium</option>
+            <option value="large">Large</option>
+        </select>
+    </div>
+
+    <button class="btn" onclick="saveSettings()">💾 Save Settings</button>
+
+    <div class="result" id="result"></div>
+</div>
+
+<script>
+    const darkToggle = document.getElementById("darkMode");
+    const langSelect = document.getElementById("lang");
+    const fontSizeSelect = document.getElementById("fontSize");
+
+    // Load saved settings
+    window.onload = () => {
+      const saved = JSON.parse(localStorage.getItem("settings")) || {};
+      if (saved.darkMode) {
+        document.body.classList.add("dark");
+        darkToggle.checked = true;
+      }
+      if (saved.lang) langSelect.value = saved.lang;
+      if (saved.fontSize) {
+        fontSizeSelect.value = saved.fontSize;
+        applyFontSize(saved.fontSize);
+      }
+    };
+
+    darkToggle.addEventListener("change", () => {
+      document.body.classList.toggle("dark", darkToggle.checked);
+    });
+
+    fontSizeSelect.addEventListener("change", () => {
+      applyFontSize(fontSizeSelect.value);
+    });
+
+    function applyFontSize(size) {
+      if (size === "small") document.body.style.fontSize = "14px";
+      else if (size === "medium") document.body.style.fontSize = "16px";
+      else if (size === "large") document.body.style.fontSize = "18px";
+    }
+
+    function saveSettings() {
+      const settings = {
+        darkMode: darkToggle.checked,
+        lang: langSelect.value,
+        notify: document.getElementById("notify").checked,
+        privacy: document.getElementById("privacy").checked,
+        fontSize: fontSizeSelect.value
+      };
+      localStorage.setItem("settings", JSON.stringify(settings));
+      document.getElementById("result").innerText = "✅ Saved";
+    }
+</script>
+
+</body>
+</html>

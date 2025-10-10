@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Levels</title>
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const lang = urlParams.get('lang');
+
+        function loadMCQ(level) {
+            window.location.href = `codingmcq?lang=${lang}&level=${level}`;
+        }
+    </script>
+</head>
+<body>
+<h2 id="title"></h2>
+<button onclick="loadMCQ('easy')">Easy</button>
+<button onclick="loadMCQ('medium')">Medium</button>
+<button onclick="loadMCQ('hard')">Hard</button>
+
+<script>
+    document.getElementById("title").innerText = lang.toUpperCase() + " Levels";
+</script>
+</body>
+</html>

@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+         http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+         version="2.5">
+
+    <!-- Java MCQ Servlet Mapping -->
+    <servlet>
+        <servlet-name>JavaMCQServlet</servlet-name>
+        <servlet-class>codewithz.javamcqservlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>JavaMCQServlet</servlet-name>
+        <url-pattern>/JavaMCQServlet</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet>
+        <servlet-name>CmcqServlet</servlet-name>
+        <servlet-class>codewithz.c_mcqservlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>CmcqServlet</servlet-name>
+        <url-pattern>/cmcq</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet>
+        <servlet-name>CppMcqServlet</servlet-name>
+        <servlet-class>codewithz.cpp_mcqservlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>CppMcqServlet</servlet-name>
+        <url-pattern>/cppmcq</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>PyServlet</servlet-name>
+        <servlet-class>codewithz.pyservlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>PyServlet</servlet-name>
+        <url-pattern>/pyquiz</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>jsmcqservlet</servlet-name>
+        <servlet-class>codewithz.js_mcqservlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>jsmcqservlet</servlet-name>
+        <url-pattern>/jsmcq</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet>
+        <servlet-name>LogicServlet</servlet-name>
+        <servlet-class>codewithz.logicservlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LogicServlet</servlet-name>
+        <url-pattern>/logicquiz</url-pattern>
+    </servlet-mapping>
+
+
+
+    <servlet>
+        <servlet-name>JavaPracticeServlet</servlet-name>
+        <servlet-class>codewithz.javapracticeservlet</servlet-class>
+    </servlet>
+
+    <!-- Servlet Mapping -->
+    <servlet-mapping>
+        <servlet-name>JavaPracticeServlet</servlet-name>
+        <url-pattern>/JavaPracticeServlet</url-pattern>
+    </servlet-mapping>
+
+
+
+    <servlet>
+        <servlet-name>CPracticeServlet</servlet-name>
+        <servlet-class>codewithz.cpracticeservlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>CPracticeServlet</servlet-name>
+        <url-pattern>/cpracticeservlet</url-pattern>
+    </servlet-mapping>
+
+    <dependency>
+        <groupId>org.json</groupId>
+        <artifactId>json</artifactId>
+        <version>20230227</version>
+    </dependency>
+
+
+    <web-app>
+        <servlet>
+            <servlet-name>ChatServlet</servlet-name>
+            <servlet-class>codewithz.chatservlet</servlet-class>
+        </servlet>
+        <servlet-mapping>
+            <servlet-name>ChatServlet</servlet-name>
+            <url-pattern>/ChatServlet</url-pattern>
+        </servlet-mapping>
+    </web-app>
+
+
+</web-app>
+

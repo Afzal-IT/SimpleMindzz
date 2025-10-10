@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Aptitude Topics</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #dfe9f3, #ffffff);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h2 {
+            color: #2c3e50;
+            font-size: 34px;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 2px #ccc;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 25px;
+        }
+
+        .concept-card {
+            background: #ffffff;
+            padding: 22px;
+            border-radius: 15px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
+            transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease;
+            text-decoration: none;
+            color: #333;
+            font-size: 18px;
+            font-weight: 500;
+        }
+
+        .concept-card:hover {
+            transform: translateY(-8px);
+            background-color: #f0f8ff;
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.12);
+            color: #007bff;
+        }
+
+        @media (max-width: 600px) {
+            h2 {
+                font-size: 26px;
+            }
+            .concept-card {
+                font-size: 16px;
+                padding: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Select an Aptitude Topic</h2>
+
+    <div class="grid">
+        <a href="aptitudes?concept=numbers" class="concept-card">Numbers</a>
+        <a href="aptitudes?concept=percentages" class="concept-card">Percentages</a>
+        <a href="aptitudes?concept=averages" class="concept-card">Averages</a>
+        <a href="aptitudes?concept=profitloss" class="concept-card">Profit & Loss</a>
+        <a href="aptitudes?concept=simpleinterest" class="concept-card">Simple Interest</a>
+        <a href="aptitudes?concept=compoundinterest" class="concept-card">Compound Interest</a>
+        <a href="aptitudes?concept=timework" class="concept-card">Time & Work</a>
+        <a href="aptitudes?concept=timespeed" class="concept-card">Time, Speed & Distance</a>
+        <a href="aptitudes?concept=ratio" class="concept-card">Ratio & Proportion</a>
+        <a href="aptitudes?concept=partnership" class="concept-card">Partnership</a>
+        <a href="aptitudes?concept=problemsages" class="concept-card">Problems on Ages</a>
+        <a href="aptitudes?concept=mixtures" class="concept-card">Mixtures & Allegations</a>
+        <a href="aptitudes?concept=permutation" class="concept-card">Permutation & Combination</a>
+        <a href="aptitudes?concept=probability" class="concept-card">Probability</a>
+        <a href="aptitudes?concept=pipes" class="concept-card">Pipes & Cisterns</a>
+        <a href="aptitudes?concept=calendar" class="concept-card">Calendars</a>
+        <a href="aptitudes?concept=clocks" class="concept-card">Clocks</a>
+        <a href="aptitudes?concept=mensuration" class="concept-card">Mensuration</a>
+        <a href="aptitudes?concept=boats" class="concept-card">Boats & Streams</a>
+        <a href="aptitudes?concept=verbal" class="concept-card">verbal</a>
+    </div>
+</div>
+
+</body>
+</html>

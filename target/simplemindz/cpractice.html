@@ -1,0 +1,133 @@
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>C Practice - Reverse String</title>-->
+<!--    <style>-->
+<!--        body { font-family: Arial, sans-serif; background: #f0f2f5; padding: 20px; }-->
+<!--        .container { max-width: 900px; margin: auto; background: #fff; padding: 20px; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }-->
+<!--        textarea { width: 100%; height: 250px; font-family: monospace; font-size: 14px; margin-bottom: 10px; border-radius: 6px; border: 1px solid #ccc; padding: 10px; resize: none; }-->
+<!--        button { padding: 10px 18px; margin: 5px; border: none; border-radius: 6px; cursor: pointer; font-weight: bold; }-->
+<!--        #runBtn { background: #28a745; color: #fff; }-->
+<!--        #hintBtn { background: #007bff; color: #fff; }-->
+<!--        #output { background: #212529; color: #f8f9fa; padding: 15px; border-radius: 6px; white-space: pre-wrap; margin-top: 10px; min-height: 100px; }-->
+<!--        h2 { color: #333; }-->
+<!--    </style>-->
+<!--</head>-->
+<!--<body>-->
+<!--<div class="container">-->
+<!--    <h2>C Practice Problem</h2>-->
+<!--    <p><b>Problem:</b> Reverse a string.</p>-->
+<!--    <button id="hintBtn">Show Hint</button>-->
+<!--    <p id="hint" style="display:none; color: #555;">Hint: Use a loop and swap characters from both ends of the string.</p>-->
+
+<!--    <textarea id="codeArea">-->
+<!--// Write your code here-->
+<!--#include <stdio.h>-->
+<!--#include <string.h>-->
+
+<!--int main() {-->
+<!--    char str[] = "Hello";-->
+<!--    int n = strlen(str);-->
+
+<!--    // TODO: reverse the string-->
+
+<!--    printf("Reversed=%s\n", str);-->
+<!--    return 0;-->
+<!--}-->
+<!--</textarea>-->
+<!--    <br>-->
+<!--    <button id="runBtn">Run Code</button>-->
+
+<!--    <h3>Output:</h3>-->
+<!--    <div id="output">Your output will appear here...</div>-->
+<!--</div>-->
+
+<!--<script>-->
+<!--    document.getElementById("hintBtn").onclick = () => {-->
+<!--        let hint = document.getElementById("hint");-->
+<!--        hint.style.display = hint.style.display==="none"?"block":"none";-->
+<!--    };-->
+
+<!--    document.getElementById("runBtn").onclick = async () => {-->
+<!--        const code = document.getElementById("codeArea").value;-->
+<!--        let servletURL = window.location.origin + "/simplemindz/CPracticeServlet";-->
+
+<!--        try{-->
+<!--            let res = await fetch(servletURL, {-->
+<!--                method:"POST",-->
+<!--                headers: {"Content-Type":"application/x-www-form-urlencoded"},-->
+<!--                body: "code=" + encodeURIComponent(code)-->
+<!--            });-->
+
+<!--            let text = await res.text();-->
+<!--            document.getElementById("output").textContent = text;-->
+<!--        } catch(err){-->
+<!--            document.getElementById("output").textContent = "Error: "+err;-->
+<!--        }-->
+<!--    };-->
+<!--</script>-->
+<!--</body>-->
+<!--</html>-->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>C Practice</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #f0f2f5; padding: 20px; }
+        .container { max-width: 900px; margin: auto; background: #fff; padding: 20px; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        textarea { width: 100%; height: 250px; font-family: monospace; font-size: 14px; margin-bottom: 10px; border-radius: 6px; border: 1px solid #ccc; padding: 10px; resize: none; }
+        button { padding: 10px 18px; margin: 5px; border: none; border-radius: 6px; cursor: pointer; font-weight: bold; }
+        #runBtn { background: #28a745; color: #fff; }
+        #hintBtn { background: #007bff; color: #fff; }
+        #output { background: #212529; color: #f8f9fa; padding: 15px; border-radius: 6px; white-space: pre-wrap; margin-top: 10px; min-height: 100px; }
+        h2 { color: #333; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2>C Practice Problem</h2>
+    <p id="problem"><b>Problem:</b> Find the biggest of 3 numbers.</p>
+    <button id="hintBtn">Show Hint</button>
+    <p id="hint" style="display:none; color: #555;">Hint: Use if-else or ternary operator.</p>
+
+    <textarea id="codeArea">
+// Starter code
+#include <stdio.h>
+int main() {
+    int a = 10, b = 20, c = 15;
+    int big;
+    // TODO: find biggest
+    big = (a > b ? (a > c ? a : c) : (b > c ? b : c));
+    printf("Biggest=%d\n", big);
+    return 0;
+}
+    </textarea>
+    <br>
+    <button id="runBtn">Run Code</button>
+
+    <h3>Output:</h3>
+    <div id="output">Your output will appear here...</div>
+</div>
+
+<script>
+    // Hint toggle
+    document.getElementById("hintBtn").onclick = () => {
+        let hint = document.getElementById("hint");
+        hint.style.display = hint.style.display === "none" ? "block" : "none";
+    };
+
+    document.getElementById("runBtn").onclick = async () => {
+        const code = document.getElementById("codeArea").value;
+        let res = await fetch("CPracticeServlet", {
+            method: "POST",
+            headers: { "Content-Type": "application/x-www-form-urlencoded" },
+            body: "code=" + encodeURIComponent(code)
+        });
+        let text = await res.text();
+        document.getElementById("output").innerHTML = text;
+    };
+</script>
+</body>
+</html>

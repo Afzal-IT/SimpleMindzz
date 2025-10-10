@@ -1,0 +1,157 @@
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+<!--<head>-->
+<!--    <title>Java Levels</title>-->
+<!--    <style>-->
+<!--        body {-->
+<!--            font-family: Arial;-->
+<!--            text-align: center;-->
+<!--            margin-top: 50px;-->
+<!--        }-->
+<!--        .level-btn {-->
+<!--            padding: 15px 30px;-->
+<!--            margin: 10px;-->
+<!--            font-size: 20px;-->
+<!--            background-color: #4CAF50;-->
+<!--            color: white;-->
+<!--            border: none;-->
+<!--            border-radius: 10px;-->
+<!--            cursor: pointer;-->
+<!--        }-->
+<!--        .level-btn:hover {-->
+<!--            background-color: #45a049;-->
+<!--        }-->
+<!--    </style>-->
+<!--</head>-->
+<!--<body>-->
+<!--<h2>Choose Your Difficulty Level</h2>-->
+<!--<button class="level-btn" onclick="openQuiz('easy')">Easy</button>-->
+<!--<button class="level-btn" onclick="openQuiz('medium')">Medium</button>-->
+<!--<button class="level-btn" onclick="openQuiz('hard')">Hard</button>-->
+
+<!--<script>-->
+<!--    function openQuiz(level) {-->
+<!--        window.open("JavaMCQServlet?level=" + level, "_blank");-->
+<!--    }-->
+<!--</script>-->
+<!--</body>-->
+<!--</html>-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Java Levels</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background: #f2f2f2;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start; /* top alignment */
+        }
+
+        .card {
+            background: #ffffff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            text-align: center;
+            max-width: 500px;
+            width: 100%;
+            margin-top: 80px; /* move box slightly down from top */
+        }
+
+        h2 {
+            margin: 0;
+            font-size: 22px;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        h3 {
+            margin: 15px 0;
+            font-size: 16px;
+            color: #444;
+        }
+
+        .timer-select {
+            margin: 10px 0 20px;
+            font-size: 15px;
+            padding: 6px 10px;
+        }
+
+        .levels {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .level-btn {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 6px;
+            font-size: 15px;
+            cursor: pointer;
+            font-weight: 600;
+            min-width: 100px;
+            transition: transform 0.2s ease;
+        }
+
+        .level-btn:hover {
+            transform: translateY(-3px);
+        }
+
+        .easy {
+            background-color: #d4edda;
+            color: #155724;
+        }
+
+        .medium {
+            background-color: #fff3cd;
+            color: #856404;
+        }
+
+        .hard {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <h2>Concept: Java</h2>
+    <h3>Select Difficulty Level:</h3>
+
+    <label for="timer">Timer:</label>
+    <select id="timer" class="timer-select">
+        <option value="off">Off</option>
+        <option value="on">On</option>
+    </select>
+
+    <div class="levels">
+        <button class="level-btn easy" onclick="openQuiz('easy')">Easy</button>
+        <button class="level-btn medium" onclick="openQuiz('medium')">Medium</button>
+        <button class="level-btn hard" onclick="openQuiz('hard')">Hard</button>
+    </div>
+</div>
+
+<script>
+    function openQuiz(level) {
+        let timer = document.getElementById("timer").value;
+        window.open("JavaMCQServlet?level=" + level + "&timer=" + timer, "_blank");
+    }
+
+        function openQuiz(level) {
+        let timer = document.getElementById("timer").value;
+        window.location.href = "JavaMCQServlet?level=" + level + "&timer=" + timer;
+    }
+</script>
+
+</body>
+</html>
+

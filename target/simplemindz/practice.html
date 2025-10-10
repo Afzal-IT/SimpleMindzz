@@ -1,0 +1,115 @@
+
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="utf-8" />-->
+<!--    <title>Practice - SimpleMinds</title>-->
+<!--    <style>-->
+<!--        body {font-family: 'Segoe UI', sans-serif; background: linear-gradient(90deg,#11998e,#38ef7d); color:#fff; padding:40px; text-align:center;}-->
+<!--        h1{margin-bottom:20px}-->
+<!--        .lang-btn {background:#fff;color:#11998e;padding:14px 28px;border-radius:10px;border:none;cursor:pointer;font-weight:700;margin:8px;transition:transform .15s}-->
+<!--        .lang-btn:hover{transform:translateY(-4px)}-->
+<!--    </style>-->
+<!--</head>-->
+<!--<body>-->
+<!--<h1>🚀 Practice — Choose a Track</h1>-->
+<!--<p style="font-size:18px;margin-bottom:30px">“Small steps every day — 1 problem at a time.”</p>-->
+
+<!--&lt;!&ndash; Buttons &ndash;&gt;-->
+<!--<div>-->
+<!--    <button class="lang-btn" id="javaBtn">Java</button>-->
+<!--    <button class="lang-btn" id="cBtn">C</button>-->
+<!--    <button class="lang-btn" id="cppBtn">C++</button>-->
+<!--    <button class="lang-btn" id="dsaBtn">DSA</button>-->
+<!--    <button class="lang-btn" id="pyBtn">Python</button>-->
+<!--    <button class="lang-btn" id="jsBtn">JavaScript</button>-->
+<!--</div>-->
+
+<!--<script>-->
+<!--    // Open Java practice in new tab. (Other buttons can be wired similarly.)-->
+<!--    document.getElementById('javaBtn').addEventListener('click', () => window.open('javapractice.html', '_blank'));-->
+<!--    document.getElementById('cBtn').addEventListener('click', () => window.open('cpractice.html', '_blank'));-->
+<!--    document.getElementById('cppBtn').addEventListener('click', () => alert('C++ practice coming soon'));-->
+<!--    document.getElementById('dsaBtn').addEventListener('click', () => alert('DSA practice coming soon'));-->
+<!--    document.getElementById('pyBtn').addEventListener('click', () => alert('Python practice coming soon'));-->
+<!--    document.getElementById('jsBtn').addEventListener('click', () => alert('JavaScript practice coming soon'));-->
+<!--</script>-->
+<!--</body>-->
+<!--</html>-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Practice - SimpleMinds</title>
+    <style>
+        body {
+          margin: 0;
+          font-family: 'Segoe UI', sans-serif;
+          background: linear-gradient(135deg, #1e3c72, #2a5298);
+          height: 100vh;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          color: #fff;
+          text-align: center;
+        }
+        .container {
+          max-width: 600px;
+        }
+        h1 {
+          margin-bottom: 15px;
+          font-size: 42px;
+          animation: fadeIn 1.5s ease-in-out;
+        }
+        p {
+          font-size: 18px;
+          margin-bottom: 35px;
+          opacity: 0.9;
+          animation: fadeIn 2s ease-in-out;
+        }
+        .lang-btn {
+          background: #ffffff;
+          color: #1e3c72;
+          padding: 14px 28px;
+          border-radius: 12px;
+          border: none;
+          cursor: pointer;
+          font-weight: 700;
+          margin: 10px;
+          transition: all 0.25s ease;
+          box-shadow: 0px 4px 10px rgba(0,0,0,0.2);
+        }
+        .lang-btn:hover {
+          transform: translateY(-4px) scale(1.05);
+          background: #f1f1f1;
+        }
+        @keyframes fadeIn {
+          from { opacity: 0; transform: translateY(-20px); }
+          to   { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>🚀 Practice — Choose a Track</h1>
+    <p>“Small steps every day — 1 problem at a time.”</p>
+    <div>
+        <button class="lang-btn" id="javaBtn">Java</button>
+        <button class="lang-btn" id="cBtn">C</button>
+        <button class="lang-btn" id="cppBtn">C++</button>
+        <button class="lang-btn" id="dsaBtn">DSA</button>
+        <button class="lang-btn" id="pyBtn">Python</button>
+    </div>
+</div>
+
+
+
+<script>
+    document.getElementById('javaBtn').addEventListener('click', () => window.open('javapractice.html', '_self'));
+    document.getElementById('cBtn').addEventListener('click', () => window.open('cpractice.html', '_self'));
+    document.getElementById('cppBtn').addEventListener('click', () => alert('C++ practice coming soon'));
+    document.getElementById('dsaBtn').addEventListener('click', () => alert('DSA practice coming soon'));
+    document.getElementById('pyBtn').addEventListener('click', () => alert('Python practice coming soon'));
+</script>
+</body>
+</html>

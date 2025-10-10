@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>About — SimpleMindz</title>
+    <style>
+        :root{
+          --navy:#0b2340;
+          --accent:#2563eb;
+          --muted:#6b7280;
+          --card:#ffffff;
+          --bg:#f8fafc;
+          --glass: rgba(255,255,255,0.6);
+        }
+
+        *{box-sizing:border-box}
+        body{
+          margin:0;
+          font-family: Inter, 'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial;
+          background:var(--bg);
+          color:var(--navy);
+          -webkit-font-smoothing:antialiased;
+          -moz-osx-font-smoothing:grayscale;
+          line-height:1.5;
+        }
+
+        .container{max-width:1100px;margin:48px auto;padding:24px}
+
+        .hero{
+          background:linear-gradient(135deg, rgba(37,99,235,0.08), rgba(11,35,64,0.04));
+          border-radius:12px;
+          padding:28px;
+          display:flex;gap:20px;align-items:center;
+          box-shadow:0 6px 20px rgba(11,35,64,0.06);
+        }
+
+        .brand{
+          width:96px;height:96px;border-radius:12px;background:var(--card);
+          display:flex;align-items:center;justify-content:center;font-size:36px;
+          box-shadow:0 6px 18px rgba(37,99,235,0.08);
+          color:var(--accent);
+          font-weight:700;
+        }
+
+        .hero h1{font-size:24px;margin-bottom:6px}
+        .hero p{margin:0;color:var(--muted)}
+
+        .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:22px}
+
+        .card{
+          background:var(--card);
+          border-radius:10px;padding:18px;box-shadow:0 6px 18px rgba(11,35,64,0.04);
+        }
+
+        .card h3{margin-top:0;color:var(--navy)}
+        .muted{color:var(--muted);font-size:14px}
+
+        ul.bullets{padding-left:18px;margin-top:8px}
+        ul.bullets li{margin:8px 0}
+
+        .full-width{grid-column:1 / -1}
+
+        footer{margin-top:26px;color:var(--muted);font-size:13px;text-align:center}
+
+        @media (max-width:880px){
+          .grid{grid-template-columns:1fr}
+          .hero{flex-direction:row}
+        }
+
+        @media (max-width:520px){
+          .hero{flex-direction:column;align-items:flex-start}
+          .brand{width:72px;height:72px;font-size:28px}
+        }
+    </style>
+</head>
+<body>
+<main class="container">
+    <section class="hero">
+        <div class="brand">SM</div>
+        <div>
+            <h1>SimpleMindz — AI-powered online learning for freshers</h1>
+            <p class="muted">A beginner-friendly platform to practice aptitude, coding, interview questions and logic — fully free and built to take learners from easy → intermediate.</p>
+        </div>
+    </section>
+
+    <section class="grid">
+        <article class="card">
+            <h3>What is SimpleMindz?</h3>
+            <p class="muted">SimpleMindz is an AI-assisted learning platform focused on practical practice. It helps freshers build aptitude and programming foundations with instant feedback and clear progress tracking.</p>
+            <ul class="bullets">
+                <li>Designed for freshers and early learners.</li>
+                <li>Practice-driven: quizzes, instant correctness, totals &amp; scores.</li>
+                <li>Free to use — no paywall for core learning.</li>
+            </ul>
+        </article>
+
+        <article class="card">
+            <h3>Aptitude — conceptwise &amp; levelled</h3>
+            <p class="muted">All aptitude topics are split into Easy / Medium / Hard. Each concept has curated question-sets so learners can steadily improve their accuracy and speed.</p>
+            <ul class="bullets">
+                <li>Topic examples: Numbers, Percentages, Time &amp; Work, Ratio, Probability, Sequence.</li>
+                <li>10 questions per level, timer support and instant result after submission.</li>
+            </ul>
+        </article>
+
+        <article class="card">
+            <h3>Coding practice (Java, C, C++, JS, Python)</h3>
+            <p class="muted">Language-specific MCQs and practice problems available in Easy / Medium / Hard. Learn theory, try examples, and execute code using integrated compilers where available.</p>
+            <ul class="bullets">
+                <li>MCQs to test language fundamentals and DSA basics.</li>
+                <li>Hands-on compilers for Java, C, C++, JS and practice exercises.</li>
+            </ul>
+        </article>
+
+        <article class="card">
+            <h3>Interview Questions &amp; Company Prep</h3>
+            <p class="muted">Collection of previous interview questions from MNCs, company-specific expectations and tips to prepare for internships and job openings.</p>
+            <ul class="bullets">
+                <li>Company pages include previous questions, skills required and current openings (intern / full time) where available.</li>
+                <li>Short notes on what the company typically expects and how to prepare.</li>
+            </ul>
+        </article>
+
+        <article class="card full-width">
+            <h3>Logic Building</h3>
+            <p class="muted">Practice sections that strengthen problem-solving: math-logic, string logic, pattern programs, output tracing, array logic and more.</p>
+            <ul class="bullets">
+                <li>Interactive quizzes that show correct/wrong instantly with explanations.</li>
+                <li>Designed to improve reasoning used in both aptitude and programming rounds.</li>
+            </ul>
+        </article>
+
+        <article class="card">
+            <h3>Explore &amp; Roadmap</h3>
+            <p class="muted">Find upcoming courses, "coming soon" features and a clear roadmap for career development — from fresher to intermediate level.</p>
+            <ul class="bullets">
+                <li>Explore learning paths, upcoming bootcamps and suggested next topics.</li>
+                <li>Roadmap section contains step-by-step career tips and study plans.</li>
+            </ul>
+        </article>
+
+        <article class="card">
+            <h3>How quizzes work</h3>
+            <p class="muted">Each quiz gives instant feedback on answers, shows which are correct/wrong and displays a total score at the end. Progress is tracked so learners can revisit weak topics.</p>
+        </article>
+
+    </section>
+
+    <footer>
+        Built with ♥ for freshers • Fully free • Practice. Learn. Repeat.
+    </footer>
+</main>
+</body>
+</html>

@@ -1,0 +1,201 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>C++ Quiz Levels</title>-->
+<!--    <style>-->
+<!--        body {-->
+<!--            font-family: 'Segoe UI', sans-serif;-->
+<!--            background: linear-gradient(to right, #1e3c72, #2a5298);-->
+<!--            color: #fff;-->
+<!--            text-align: center;-->
+<!--            padding: 50px;-->
+<!--        }-->
+
+<!--        h1 {-->
+<!--            font-size: 36px;-->
+<!--            margin-bottom: 30px;-->
+<!--            text-shadow: 2px 2px 5px rgba(0,0,0,0.3);-->
+<!--        }-->
+
+<!--        .level-container {-->
+<!--            display: flex;-->
+<!--            justify-content: center;-->
+<!--            gap: 30px;-->
+<!--        }-->
+
+<!--        .level-box {-->
+<!--            background-color: #34495e;-->
+<!--            border-radius: 15px;-->
+<!--            padding: 30px 50px;-->
+<!--            cursor: pointer;-->
+<!--            transition: 0.3s;-->
+<!--            box-shadow: 0 4px 8px rgba(0,0,0,0.4);-->
+<!--        }-->
+
+<!--        .level-box:hover {-->
+<!--            background-color: #9b59b6;-->
+<!--            transform: scale(1.05);-->
+<!--        }-->
+
+<!--        .level-box h2 {-->
+<!--            font-size: 28px;-->
+<!--            margin: 0;-->
+<!--        }-->
+<!--    </style>-->
+
+<!--    <script>-->
+<!--        function openCppQuiz(level) {-->
+<!--            window.open("cppmcq?level=" + level, "_blank");-->
+<!--        }-->
+<!--    </script>-->
+<!--</head>-->
+<!--<body>-->
+<!--<h1>C++ Quiz Levels</h1>-->
+
+<!--<div class="level-container">-->
+<!--    <div class="level-box" onclick="openCppQuiz('easy')">-->
+<!--        <h2>Easy</h2>-->
+<!--    </div>-->
+<!--    <div class="level-box" onclick="openCppQuiz('medium')">-->
+<!--        <h2>Medium</h2>-->
+<!--    </div>-->
+<!--    <div class="level-box" onclick="openCppQuiz('hard')">-->
+<!--        <h2>Hard</h2>-->
+<!--    </div>-->
+<!--</div>-->
+<!--</body>-->
+<!--</html>-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>C++ Quiz Levels</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #f2f2f2;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding-top: 60px;
+            margin: 0;
+        }
+
+        .container {
+            background: #fff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            text-align: center;
+            width: 500px;
+            max-width: 90%;
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        p {
+            font-size: 18px;
+            margin-bottom: 15px;
+            color: #444;
+        }
+
+        label {
+            font-size: 16px;
+            margin-right: 5px;
+        }
+
+        select {
+            padding: 5px;
+            font-size: 14px;
+        }
+
+        .level-container {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .level-box {
+            padding: 10px 25px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            border: none;
+            transition: 0.2s;
+        }
+
+        .easy {
+            background-color: #d4edda;
+            color: #155724;
+        }
+
+        .medium {
+            background-color: #fff3cd;
+            color: #856404;
+        }
+
+        .hard {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+
+        .level-box:hover {
+            opacity: 0.8;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 600px) {
+            h1 { font-size: 22px; }
+            p { font-size: 16px; }
+            label { font-size: 14px; }
+            select { font-size: 13px; padding: 4px; }
+            .level-box { font-size: 14px; padding: 8px 18px; }
+            .level-container { gap: 12px; }
+            .container { padding: 25px; }
+        }
+
+        @media (max-width: 400px) {
+            h1 { font-size: 20px; }
+            p { font-size: 14px; }
+            .level-box { font-size: 13px; padding: 6px 14px; }
+        }
+    </style>
+
+    <script>
+        function openCppQuiz(level) {
+            const timer = document.getElementById("timer").value;
+            window.location.href = "cpp_mcq?level=" + level + "&timer=" + timer;
+        }
+    </script>
+</head>
+<body>
+<div class="container">
+    <h1>Concept: Numbers</h1>
+    <p>Select Difficulty Level:</p>
+
+    <div>
+        <label for="timer">Timer:</label>
+        <select id="timer">
+            <option value="off">Off</option>
+            <option value="on">On</option>
+        </select>
+    </div>
+
+    <div class="level-container">
+        <button class="level-box easy" onclick="openCppQuiz('easy')">Easy</button>
+        <button class="level-box medium" onclick="openCppQuiz('medium')">Medium</button>
+        <button class="level-box hard" onclick="openCppQuiz('hard')">Hard</button>
+    </div>
+</div>
+</body>
+</html>
+

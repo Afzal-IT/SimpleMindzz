@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Top MNC Interview Questions</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(to right, #141e30, #243b55);
+            padding: 40px;
+            text-align: center;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        h1 {
+            font-size: 36px;
+            margin-bottom: 40px;
+            opacity: 0;
+            transform: translateY(-50px) scale(0.8);
+        }
+
+        .company-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 25px;
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        .company-box {
+            background: #ffffff;
+            padding: 20px 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            color: #2c3e50;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s ease;
+            opacity: 0;
+            transform: translateY(50px) scale(0.9) rotateX(10deg);
+        }
+
+        .company-box:hover {
+            background-color: #1abc9c;
+            color: white;
+            transform: translateY(-5px) scale(1.05) rotateX(0deg);
+        }
+
+        @media (max-width: 600px) {
+            .company-box {
+                font-size: 14px;
+                padding: 15px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<h1>Top MNC Companies - Interview Questions</h1>
+
+<div class="company-list">
+    <a class="company-box" href="interviewque?company=TCS" target="_self">TCS</a>
+    <a class="company-box" href="interviewque?company=Infosys" target="_self">Infosys</a>
+    <a class="company-box" href="interviewque?company=Wipro" target="_self">Wipro</a>
+    <a class="company-box" href="interviewque?company=HCL" target="_self">HCL</a>
+    <a class="company-box" href="interviewque?company=Cognizant" target="_self">Cognizant</a>
+    <a class="company-box" href="interviewque?company=Capgemini" target="_self">Capgemini</a>
+    <a class="company-box" href="interviewque?company=Tech Mahindra" target="_self">Tech Mahindra</a>
+    <a class="company-box" href="interviewque?company=Mindtree" target="_self">Mindtree</a>
+    <a class="company-box" href="interviewque?company=Zoho" target="_self">Zoho</a>
+    <a class="company-box" href="interviewque?company=Accenture" target="_self">Accenture</a>
+    <a class="company-box" href="interviewque?company=IBM" target="_self">IBM</a>
+    <a class="company-box" href="interviewque?company=Oracle" target="_self">Oracle</a>
+    <a class="company-box" href="interviewque?company=L&T" target="_self">L&T Infotech</a>
+    <a class="company-box" href="interviewque?company=Hexaware" target="_self">Hexaware</a>
+    <a class="company-box" href="interviewque?company=Virtusa" target="_self">Virtusa</a>
+</div>
+
+<!-- GSAP CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script>
+    // Animate heading
+    gsap.to("h1", {
+        duration: 1.2,
+        y: 0,
+        scale: 1,
+        opacity: 1,
+        rotationX: 0,
+        ease: "back.out(1.7)"
+    });
+
+    // Animate company boxes with stagger
+    gsap.to(".company-box", {
+        duration: 1,
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        rotationX: 0,
+        stagger: 0.15,
+        ease: "elastic.out(1, 0.5)"
+    });
+</script>
+
+</body>
+</html>

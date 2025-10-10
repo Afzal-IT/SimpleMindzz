@@ -1,0 +1,587 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8" />-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>-->
+<!--    <title>Quiz Dashboard</title>-->
+<!--    <style>-->
+<!--        * {-->
+<!--            margin: 0;-->
+<!--            padding: 0;-->
+<!--            box-sizing: border-box;-->
+<!--        }-->
+
+<!--        body {-->
+<!--            font-family: 'Segoe UI', sans-serif;-->
+<!--            display: flex;-->
+<!--            height: 100vh;-->
+<!--        }-->
+
+<!--        .sidebar {-->
+<!--            width: 250px;-->
+<!--            background: #1e293b;-->
+<!--            color: white;-->
+<!--            transition: width 0.3s ease;-->
+<!--            overflow: hidden;-->
+<!--            position: relative;-->
+<!--        }-->
+
+<!--        .sidebar.collapsed {-->
+<!--            width: 70px;-->
+<!--        }-->
+
+<!--        .sidebar .logo {-->
+<!--            padding: 20px;-->
+<!--            text-align: center;-->
+<!--            font-size: 20px;-->
+<!--            font-weight: bold;-->
+<!--            border-bottom: 1px solid #334155;-->
+<!--        }-->
+
+<!--        .sidebar.collapsed .logo span {-->
+<!--            display: none;-->
+<!--        }-->
+
+<!--        .sidebar .menu-list {-->
+<!--            list-style: none;-->
+<!--            padding: 10px 0;-->
+<!--        }-->
+
+<!--        .menu-list li {-->
+<!--            padding: 12px 20px;-->
+<!--            cursor: pointer;-->
+<!--            transition: background 0.2s;-->
+<!--        }-->
+
+<!--        .menu-list li:hover {-->
+<!--            background: #334155;-->
+<!--        }-->
+
+<!--        .menu-list li a {-->
+<!--            color: white;-->
+<!--            text-decoration: none;-->
+<!--            display: block;-->
+<!--        }-->
+
+<!--        .has-submenu > a::after {-->
+<!--            content: '▸';-->
+<!--            float: right;-->
+<!--        }-->
+
+<!--        .submenu {-->
+<!--            display: none;-->
+<!--            background: #334155;-->
+<!--            margin-left: 10px;-->
+<!--        }-->
+
+<!--        .has-submenu:hover .submenu {-->
+<!--            display: block;-->
+<!--        }-->
+
+<!--        hr {-->
+<!--            margin: 10px 0;-->
+<!--            border: 0;-->
+<!--            border-top: 1px solid #475569;-->
+<!--        }-->
+
+<!--        .toggle-btn {-->
+<!--            position: absolute;-->
+<!--            top: 20px;-->
+<!--            right: -18px;-->
+<!--            background: white;-->
+<!--            color: #1e293b;-->
+<!--            width: 35px;-->
+<!--            height: 35px;-->
+<!--            border-radius: 50%;-->
+<!--            text-align: center;-->
+<!--            line-height: 35px;-->
+<!--            cursor: pointer;-->
+<!--            box-shadow: 0 0 8px rgba(0,0,0,0.2);-->
+<!--            z-index: 10;-->
+<!--            border: 2px solid #1e293b;-->
+<!--            font-weight: bold;-->
+<!--        }-->
+
+<!--        .main-content {-->
+<!--            flex: 1;-->
+<!--            padding: 30px;-->
+<!--            display: flex;-->
+<!--            align-items: center;-->
+<!--            justify-content: center;-->
+<!--            background: #f1f5f9;-->
+<!--        }-->
+
+<!--        .main-content h1 {-->
+<!--            font-size: 32px;-->
+<!--            color: #1e293b;-->
+<!--        }-->
+
+<!--        .icon-only {-->
+<!--            text-align: center;-->
+<!--            font-size: 18px;-->
+<!--        }-->
+
+<!--        .sidebar.collapsed .menu-list li a span {-->
+<!--            display: none;-->
+<!--        }-->
+
+<!--        .sidebar.collapsed .submenu {-->
+<!--            display: none !important;-->
+<!--        }-->
+
+<!--        /* Top Right Menu */-->
+<!--        .top-right-menu {-->
+<!--            position: absolute;-->
+<!--            top: 15px;-->
+<!--            right: 30px;-->
+<!--            display: flex;-->
+<!--            gap: 20px;-->
+<!--            font-family: 'Poppins', sans-serif;-->
+<!--            z-index: 10;-->
+<!--        }-->
+
+<!--        .top-right-menu ul {-->
+<!--            list-style: none;-->
+<!--            display: flex;-->
+<!--            gap: 20px;-->
+<!--            padding: 0;-->
+<!--        }-->
+
+<!--        .top-right-menu ul li {-->
+<!--            cursor: pointer;-->
+<!--            position: relative;-->
+<!--            font-size: 16px;-->
+<!--            color: #001f54;-->
+<!--        }-->
+
+<!--        .top-right-menu ul li a {-->
+<!--            text-decoration: none;-->
+<!--            color: #001f54;-->
+<!--        }-->
+
+<!--        .top-right-menu ul li:hover,-->
+<!--        .top-right-menu ul li a:hover {-->
+<!--            background-color: #e0e7ff;-->
+<!--            border-radius: 5px;-->
+<!--            padding: 3px 8px;-->
+<!--            transition: 0.3s ease;-->
+<!--        }-->
+
+<!--        .top-right-menu ul li.active {-->
+<!--            color: #001f54;-->
+<!--        }-->
+
+<!--        .top-right-menu ul li.active::after {-->
+<!--            content: none;-->
+<!--        }-->
+
+<!--        /* Dark Mode Styling */-->
+<!--        body.dark-mode {-->
+<!--            background-color: #121212;-->
+<!--            color: #ffffff;-->
+<!--        }-->
+
+<!--        body.dark-mode .sidebar {-->
+<!--            background-color: #1e1e1e;-->
+<!--            color: #ffffff;-->
+<!--        }-->
+
+<!--        body.dark-mode .sidebar li {-->
+<!--            color: #ffffff;-->
+<!--        }-->
+
+<!--        body.dark-mode .content,-->
+<!--        body.dark-mode .main-content,-->
+<!--        body.dark-mode .card,-->
+<!--        body.dark-mode .section {-->
+<!--            background-color: #1c1c1c;-->
+<!--            color: #ffffff;-->
+<!--        }-->
+
+<!--        body.dark-mode h1,-->
+<!--        body.dark-mode h2,-->
+<!--        body.dark-mode h3,-->
+<!--        body.dark-mode h4,-->
+<!--        body.dark-mode h5,-->
+<!--        body.dark-mode h6 {-->
+<!--            color: #ffffff;-->
+<!--        }-->
+
+<!--        body.dark-mode p {-->
+<!--            color: #ffffff;-->
+<!--        }-->
+
+<!--        body.dark-mode a {-->
+<!--            color: #90caf9;-->
+<!--        }-->
+
+<!--        body.dark-mode button {-->
+<!--            background-color: #333;-->
+<!--            color: #ffffff;-->
+<!--        }-->
+
+<!--        body.dark-mode i {-->
+<!--            color: #ffffff;-->
+<!--        }-->
+
+<!--        body.dark-mode .top-right-menu li {-->
+<!--            color: #ffffff !important;-->
+<!--        }-->
+
+<!--        body.dark-mode .top-right-menu li:hover {-->
+<!--            background-color: #333;-->
+<!--        }-->
+
+<!--        /* Center Content */-->
+<!--        .center-content {-->
+<!--            position: absolute;-->
+<!--            top: 50%;-->
+<!--            left: 60%;-->
+<!--            transform: translate(-50%, -50%);-->
+<!--            text-align: center;-->
+<!--            padding: 20px;-->
+<!--        }-->
+
+<!--        .greeting-text {-->
+<!--            font-size: 28px;-->
+<!--            margin-bottom: 20px;-->
+<!--            animation: reverseFadeIn 3s ease-out;-->
+<!--        }-->
+
+<!--        @keyframes reverseFadeIn {-->
+<!--            0% { opacity: 0; transform: translateX(50px); }-->
+<!--            100% { opacity: 1; transform: translateX(0); }-->
+<!--        }-->
+
+<!--        .search-box {-->
+<!--            display: flex;-->
+<!--            gap: 10px;-->
+<!--            justify-content: center;-->
+<!--            position: relative;-->
+<!--            z-index: 2;-->
+<!--        }-->
+
+<!--        .search-box input {-->
+<!--            padding: 10px;-->
+<!--            border: 1px solid #ccc;-->
+<!--            border-radius: 5px;-->
+<!--            width: 450px;-->
+<!--            font-size: 16px;-->
+<!--        }-->
+
+<!--        .search-box button {-->
+<!--            background-color: #4CAF50;-->
+<!--            color: white;-->
+<!--            border: none;-->
+<!--            padding: 11px 16px;-->
+<!--            border-radius: 5px;-->
+<!--            cursor: pointer;-->
+<!--            position: relative;-->
+<!--            overflow: hidden;-->
+<!--        }-->
+
+<!--        .search-box button i {-->
+<!--            font-size: 16px;-->
+<!--        }-->
+
+<!--        /* Ripple Effect */-->
+<!--        .ripple {-->
+<!--            position: absolute;-->
+<!--            border-radius: 50%;-->
+<!--            transform: scale(0);-->
+<!--            animation: rippleEffect 0.6s linear;-->
+<!--            background: rgba(255, 255, 255, 0.7);-->
+<!--            pointer-events: none;-->
+<!--        }-->
+
+<!--        @keyframes rippleEffect {-->
+<!--            to {-->
+<!--                transform: scale(4);-->
+<!--                opacity: 0;-->
+<!--            }-->
+<!--        }-->
+
+<!--        /* Robot Animation */-->
+<!--        .robot {-->
+<!--            position: absolute;-->
+<!--            width: 120px;-->
+<!--            height: 120px;-->
+<!--            background: url('https://cdn-icons-png.flaticon.com/512/4712/4712027.png') no-repeat center/contain;-->
+<!--            animation: circle 12s linear infinite;-->
+<!--            z-index: 1;-->
+<!--        }-->
+
+<!--        @keyframes circle {-->
+<!--            0%   { transform: rotate(0deg) translateX(250px) rotate(0deg); }-->
+<!--            100% { transform: rotate(360deg) translateX(250px) rotate(-360deg); }-->
+<!--        }-->
+<!--    </style>-->
+<!--</head>-->
+<!--<body>-->
+
+<!--&lt;!&ndash; Top Right Menu &ndash;&gt;-->
+<!--<div class="top-right-menu">-->
+<!--    <ul>-->
+<!--        <li><a href="about.html" target="_self"><i class="fas fa-home"></i> About</a></li>-->
+<!--        <li><a href="explore.html" target="_self"><i class="fas fa-compass"></i> Explore</a></li>-->
+<!--        <li><a href="practice.html" target="_self"><i class="fas fa-dumbbell"></i> Practice</a></li>-->
+<!--        <li><a href="roadmap.html" target="_self"><i class="fas fa-project-diagram"></i> Roadmap</a></li>-->
+<!--        <li id="darkModeToggle"><i class="fas fa-moon"></i> Dark Mode</li>-->
+<!--    </ul>-->
+<!--</div>-->
+
+<!--<div class="sidebar" id="sidebar">-->
+<!--    <div class="toggle-btn" onclick="toggleSidebar()">⮜</div>-->
+<!--    <div class="logo">-->
+<!--        📚 <span>Simple Minds</span>-->
+<!--    </div>-->
+
+<!--    <ul class="menu-list">-->
+<!--        <li><a href="aptitude.html">📘 <span>Aptitude</span></a></li>-->
+<!--        <li class="has-submenu">-->
+<!--            <a href="#">💻 <span>Coding</span></a>-->
+<!--            <ul class="submenu">-->
+<!--                <li><a href="java_levels.html" target="_self">Java</a></li>-->
+<!--                <li><a href="c++_levels.html" target="_self">C++</a></li>-->
+<!--                <li><a href="python_levels.html" target="_self">Python</a></li>-->
+<!--                <li><a href="js_levels.html" target="_self">JavaScript</a></li>-->
+<!--                <li><a href="c_levels.html" target="_self">C</a></li>-->
+<!--            </ul>-->
+<!--        </li>-->
+<!--        <li><a href="interviewque.html" target="_self">📝 <span>Interview Questions</span></a></li>-->
+<!--        <li><a href="logic_levels.html">🧠 <span>Logic Building</span></a></li>-->
+<!--        <hr />-->
+<!--        <li><a href="profile.jsp" target="_self">👤 <span>Profile</span></a></li>-->
+<!--        <li><a href="setting.html">⚙️ <span>Settings</span></a></li>-->
+<!--        <li><a href="logout.jsp">🚪 <span>Logout</span></a></li>-->
+<!--    </ul>-->
+<!--</div>-->
+<!--&lt;!&ndash; Centered Content &ndash;&gt;-->
+<!--<div class="center-content">-->
+<!--    <h2 class="greeting-text">Hello, How Can I Help You?</h2>-->
+<!--    <div class="search-box">-->
+<!--        <h3 style="font-size:24px; font-weight:600; color:#1e293b; line-height:45px;"> SimpleMindz AI</h3>-->
+<!--        <button id="searchBtn"><i class="fas fa-search"></i></button>-->
+<!--    </div>-->
+<!--    &lt;!&ndash; Robot &ndash;&gt;-->
+<!--    <div class="robot"></div>-->
+<!--</div>-->
+
+
+<!--<script>-->
+<!--    function toggleSidebar() {-->
+<!--        document.getElementById("sidebar").classList.toggle("collapsed");-->
+<!--    }-->
+
+<!--    document.querySelectorAll('.top-right-menu ul li').forEach(item => {-->
+<!--        item.addEventListener('click', () => {-->
+<!--            document.querySelectorAll('.top-right-menu ul li').forEach(li => li.classList.remove('active'));-->
+<!--            item.classList.add('active');-->
+<!--        });-->
+<!--    });-->
+
+<!--    document.getElementById("darkModeToggle").addEventListener("click", () => {-->
+<!--        document.body.classList.toggle("dark-mode");-->
+<!--    });-->
+
+<!--    // Ripple Effect + Open Chatbot in same tab-->
+<!--const button = document.getElementById("searchBtn");-->
+<!--button.addEventListener("click", function(e) {-->
+<!--    const circle = document.createElement("span");-->
+<!--    circle.classList.add("ripple");-->
+<!--    this.appendChild(circle);-->
+
+<!--    const rect = this.getBoundingClientRect();-->
+<!--    circle.style.width = circle.style.height = Math.max(rect.width, rect.height) + "px";-->
+<!--    circle.style.left = e.clientX - rect.left - (circle.offsetWidth / 2) + "px";-->
+<!--    circle.style.top = e.clientY - rect.top - (circle.offsetHeight / 2) + "px";-->
+
+<!--    setTimeout(() => { circle.remove(); }, 600);-->
+
+<!--    // ✅ Open chatbot.html in SAME tab-->
+<!--    window.location.href = 'chatbot.html';-->
+<!--});-->
+
+<!--// Enter key triggers search button-->
+<!--const searchInput = document.querySelector('.search-box input');-->
+<!--searchInput.addEventListener('keypress', (e) => {-->
+<!--    if (e.key === "Enter") button.click();-->
+<!--});-->
+
+<!--</script>-->
+
+<!--</body>-->
+<!--</html>-->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SimpleMindz Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body, html { font-family: 'Roboto', sans-serif; background:#f0f4f8; color:#1e293b; height:100%; }
+        body { display:flex; flex-direction:row; min-height:100vh; overflow-x:hidden; }
+
+        /* Sidebar */
+        .sidebar {
+            width:250px; background:#1e293b; color:white; transition:0.3s; overflow:hidden; flex-shrink:0; position:relative;
+        }
+        .sidebar.collapsed { width:70px; }
+        .sidebar .logo { padding:20px; text-align:center; font-size:20px; font-weight:bold; border-bottom:1px solid #334155; }
+        .sidebar.collapsed .logo span { display:none; }
+        .menu-list { list-style:none; padding:10px 0; }
+        .menu-list li { padding:12px 20px; cursor:pointer; transition:0.2s; }
+        .menu-list li:hover { background:#334155; }
+        .menu-list li a { color:white; text-decoration:none; display:block; }
+        .has-submenu > a::after { content:'▸'; float:right; }
+        .submenu { display:none; background:#334155; margin-left:10px; }
+        .has-submenu:hover .submenu { display:block; }
+        .sidebar.collapsed .menu-list li a span { display:none; }
+        .sidebar.collapsed .submenu { display:none !important; }
+        .toggle-btn { position:absolute; top:20px; right:-18px; background:white; color:#1e293b; width:35px; height:35px; border-radius:50%; text-align:center; line-height:35px; cursor:pointer; box-shadow:0 0 8px rgba(0,0,0,0.2); border:2px solid #1e293b; font-weight:bold; z-index:10; }
+
+        /* Top-right menu */
+        .top-right-menu {
+            position:fixed; top:10px; right:10px; display:flex; gap:10px; z-index:100; background:#f1f5f9; padding:8px 12px; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.1);
+            flex-wrap:wrap;
+        }
+        .top-right-menu ul { list-style:none; display:flex; gap:10px; padding:0; margin:0; flex-wrap:wrap; }
+        .top-right-menu ul li { cursor:pointer; position:relative; font-size:15px; color:#001f54; }
+        .top-right-menu ul li a { text-decoration:none; color:#001f54; display:block; padding:4px 6px; }
+        .top-right-menu ul li:hover, .top-right-menu ul li a:hover { background-color:#e0e7ff; border-radius:5px; transition:0.3s; }
+        .top-right-menu ul li.active { color:#001f54; }
+
+        /* Center content */
+        .center-content { flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:60px 20px 20px; text-align:center; max-width:100%; }
+        .greeting-text { font-size:28px; margin-bottom:20px; animation:reverseFadeIn 1.5s ease-out; }
+        @keyframes reverseFadeIn { 0% {opacity:0; transform:translateX(50px);} 100% {opacity:1; transform:translateX(0);} }
+
+        .search-box { display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin-bottom:30px; align-items:center; max-width:100%; }
+        .search-box input { padding:10px; border:1px solid #ccc; border-radius:5px; width:300px; max-width:100%; font-size:16px; }
+        .search-box button { background-color:#4CAF50; color:white; border:none; padding:11px 16px; border-radius:5px; cursor:pointer; position:relative; overflow:hidden; }
+        .search-box button i { font-size:16px; }
+        .ripple { position:absolute; border-radius:50%; transform:scale(0); animation:rippleEffect 0.6s linear; background: rgba(255,255,255,0.7); pointer-events:none; }
+        @keyframes rippleEffect { to { transform:scale(4); opacity:0; } }
+
+        .robot { width:100px; height:100px; background:url('https://cdn-icons-png.flaticon.com/512/4712/4712027.png') no-repeat center/contain; animation:circle 12s linear infinite; margin-top:20px; }
+        @keyframes circle { 0% {transform:rotate(0deg) translateX(200px) rotate(0deg);} 100% {transform:rotate(360deg) translateX(200px) rotate(-360deg);} }
+
+        /* Dark Mode */
+        body.dark-mode { background-color:#121212; color:#ffffff; }
+        body.dark-mode .sidebar { background-color:#1e1e1e; color:#ffffff; }
+        body.dark-mode .sidebar li a { color:#e0e0e0; }
+        body.dark-mode .sidebar li:hover { background:#333333; }
+        body.dark-mode .sidebar .logo { border-bottom:1px solid #333; }
+        body.dark-mode .top-right-menu { background:#1e1e1e; box-shadow:0 2px 6px rgba(255,255,255,0.1); }
+        body.dark-mode .top-right-menu ul li, body.dark-mode .top-right-menu ul li a { color:#ffffff !important; }
+        body.dark-mode .top-right-menu ul li:hover, body.dark-mode .top-right-menu ul li a:hover { background-color:#333; }
+        body.dark-mode .greeting-text { color:#ffffff; }
+        body.dark-mode .search-box input { background:#1e1e1e; color:#fff; border:1px solid #444; }
+        body.dark-mode .search-box button { background-color:#66bb6a; }
+
+      /* Responsive adjustments */
+@media(max-width:768px){
+    body { flex-direction:column; }
+    .sidebar { width:100%; display:flex; justify-content:center; align-items:center; position:relative; }
+    .toggle-btn { display:none; }
+    /* Move top-right menu below sidebar */
+    .top-right-menu {
+        position:relative;
+        margin:10px auto;
+        justify-content:center;
+        flex-wrap:wrap;
+        width:95%;
+    }
+    .top-right-menu ul { flex-wrap:wrap; justify-content:center; }
+    .center-content { padding:30px 15px; margin-top:10px; }
+    .robot { animation:none; margin:20px auto; }
+}
+@media(max-width:480px){
+    .greeting-text { font-size:22px; }
+    .search-box input { width:160px; padding:8px; font-size:14px; }
+    .search-box button { padding:8px 12px; font-size:14px; }
+    .robot { width:70px; height:70px; animation:none; margin-top:15px; }
+    .top-right-menu ul { flex-wrap:wrap; justify-content:center; }
+    .top-right-menu ul li { font-size:14px; padding:4px 6px; }
+}
+
+    </style>
+</head>
+<body>
+
+<!-- Top Right Menu -->
+<div class="top-right-menu">
+    <ul>
+        <li><a href="about.html"><i class="fas fa-home"></i> About</a></li>
+        <li><a href="explore.html"><i class="fas fa-compass"></i> Explore</a></li>
+        <li><a href="practice.html"><i class="fas fa-dumbbell"></i> Practice</a></li>
+        <li><a href="roadmap.html"><i class="fas fa-project-diagram"></i> Roadmap</a></li>
+        <li id="darkModeToggle"><i class="fas fa-moon"></i> Dark Mode</li>
+    </ul>
+</div>
+
+<!-- Sidebar -->
+<div class="sidebar" id="sidebar">
+    <div class="toggle-btn" onclick="toggleSidebar()">⮜</div>
+    <div class="logo">📚 <span>Simple Mindz</span></div>
+    <ul class="menu-list">
+        <li><a href="aptitude.html">📘 <span>Aptitude</span></a></li>
+        <li class="has-submenu">
+            <a href="#">💻 <span>Coding</span></a>
+            <ul class="submenu">
+                <li><a href="java_levels.html">Java</a></li>
+                <li><a href="c++_levels.html">C++</a></li>
+                <li><a href="python_levels.html">Python</a></li>
+                <li><a href="js_levels.html">JavaScript</a></li>
+                <li><a href="c_levels.html">C</a></li>
+            </ul>
+        </li>
+        <li><a href="interviewque.html">📝 <span>Interview Questions</span></a></li>
+        <li><a href="logic_levels.html">🧠 <span>Logic Building</span></a></li>
+        <hr/>
+        <li><a href="profile.jsp">👤 <span>Profile</span></a></li>
+        <li><a href="setting.html">⚙️ <span>Settings</span></a></li>
+        <li><a href="logout.jsp">🚪 <span>Logout</span></a></li>
+    </ul>
+</div>
+
+<!-- Centered Content -->
+<div class="center-content">
+    <h2 class="greeting-text">Hello, How Can I Help You?</h2>
+    <div class="search-box">
+        <h3 style="font-size:24px; font-weight:600; color:#1e293b; line-height:45px;"> SimpleMindz AI</h3>
+        <button id="searchBtn"><i class="fas fa-search"></i></button>
+    </div>
+    <div class="robot"></div>
+</div>
+
+<script src="https://kit.fontawesome.com/a81368914c.js" crossorigin="anonymous"></script>
+<script>
+    function toggleSidebar(){ document.getElementById("sidebar").classList.toggle("collapsed"); }
+    document.querySelectorAll('.top-right-menu ul li').forEach(item=>{
+        item.addEventListener('click', ()=>{ document.querySelectorAll('.top-right-menu ul li').forEach(li=>li.classList.remove('active')); item.classList.add('active'); });
+    });
+    document.getElementById("darkModeToggle").addEventListener("click", ()=>{ document.body.classList.toggle("dark-mode"); });
+
+    const button = document.getElementById("searchBtn");
+    button.addEventListener("click", function(e){
+        const circle = document.createElement("span");
+        circle.classList.add("ripple");
+        this.appendChild(circle);
+        const rect = this.getBoundingClientRect();
+        circle.style.width = circle.style.height = Math.max(rect.width,rect.height) + "px";
+        circle.style.left = e.clientX - rect.left - (circle.offsetWidth/2) + "px";
+        circle.style.top = e.clientY - rect.top - (circle.offsetHeight/2) + "px";
+        setTimeout(()=>{ circle.remove(); },600);
+        window.location.href = 'chatbot.html';
+    });
+
+    const searchInput = document.querySelector('.search-box input');
+    searchInput?.addEventListener('keypress', e => { if(e.key==="Enter") button.click(); });
+</script>
+</body>
+</html>

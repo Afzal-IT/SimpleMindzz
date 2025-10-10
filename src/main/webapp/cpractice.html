@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>C Practice</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #f0f2f5; padding: 20px; margin:0; }
+        .container {
+            max-width: 900px;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        h2, h3 { color:#333; margin-bottom:10px; }
+        #problem, #hint { font-size: 16px; }
+        textarea {
+            width: 100%;
+            min-height: 250px;
+            font-family: monospace;
+            font-size: 14px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            resize: vertical;
+        }
+        button {
+            padding: 10px 18px;
+            margin: 5px 0;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        #runBtn { background: #28a745; color: #fff; }
+        #hintBtn { background: #007bff; color: #fff; }
+        #output {
+            background: #212529;
+            color: #f8f9fa;
+            padding: 15px;
+            border-radius: 6px;
+            white-space: pre-wrap;
+            min-height: 100px;
+            overflow-x:auto;
+        }
+
+        /* Responsive adjustments */
+        @media(max-width:768px){
+            .container { padding:15px; }
+            textarea { min-height:200px; font-size:13px; }
+            button { width:100%; margin:5px 0; }
+            #problem, #hint { font-size:14px; }
+        }
+        @media(max-width:480px){
+            h2 { font-size:20px; }
+            h3 { font-size:18px; }
+            textarea { min-height:180px; font-size:12px; }
+            button { font-size:14px; padding:8px; }
+            #problem, #hint { font-size:13px; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2>C Practice Problem</h2>
+    <p id="problem"><b>Problem:</b> Find the biggest of 3 numbers.</p>
+    <button id="hintBtn">Show Hint</button>
+    <p id="hint" style="display:none; color: #555;">Hint: Use if-else or ternary operator.</p>
+
+    <textarea id="codeArea">
+// Starter code
+#include <stdio.h>
+int main() {
+    int a = 10, b = 20, c = 15;
+    int big;
+    // TODO: find biggest
+    big = (a > b ? (a > c ? a : c) : (b > c ? b : c));
+    printf("Biggest=%d\n", big);
+    return 0;
+}
+    </textarea>
+
+    <button id="runBtn">Run Code</button>
+
+    <h3>Output:</h3>
+    <div id="output">Your output will appear here...</div>
+</div>
+
+<script>
+    // Hint toggle
+    document.getElementById("hintBtn").onclick = () => {
+        let hint = document.getElementById("hint");
+        hint.style.display = hint.style.display === "none" ? "block" : "none";
+    };
+
+    document.getElementById("runBtn").onclick = async () => {
+        const code = document.getElementById("codeArea").value;
+        let res = await fetch("CPracticeServlet", {
+            method: "POST",
+            headers: { "Content-Type": "application/x-www-form-urlencoded" },
+            body: "code=" + encodeURIComponent(code)
+        });
+        let text = await res.text();
+        document.getElementById("output").innerHTML = text;
+    };
+</script>
+</body>
+</html>

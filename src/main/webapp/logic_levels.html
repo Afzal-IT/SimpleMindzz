@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Logic Building Topics</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(to right, #1a2a6c, #1e3c72, #2a5298); /* brighter navy gradient */
+            color: #fff;
+            text-align: center;
+            padding: 50px;
+            overflow-x: hidden;
+        }
+        h1 {
+            font-size: 38px;
+            margin-bottom: 40px;
+            letter-spacing: 1px;
+            text-shadow: 2px 2px 6px rgba(0,0,0,0.4);
+            opacity: 0; /* GSAP will animate this */
+        }
+        .logic-topic {
+            display: inline-block;
+            margin: 18px;
+            padding: 25px 45px;
+            background: #2f3f74;
+            border-radius: 18px;
+            box-shadow: 0 6px 14px rgba(0,0,0,0.35);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: #f1f1f1;
+            font-size: 20px;
+            font-weight: 500;
+            opacity: 0; /* GSAP will animate this */
+            transform: translateY(50px);
+        }
+        .logic-topic:hover {
+            background: #3498db;
+            transform: translateY(-5px) scale(1.06);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script>
+        function openLogic(topic) {
+ window.location.href = "logicquiz?topic=" + topic;
+
+        }
+
+        // GSAP Animations
+        window.onload = () => {
+            gsap.to("h1", {
+                opacity: 1,
+                y: -20,
+                duration: 1,
+                ease: "power3.out"
+            });
+
+            gsap.to(".logic-topic", {
+                opacity: 1,
+                y: 0,
+                duration: 1,
+                stagger: 0.2,
+                ease: "back.out(1.7)"
+            });
+
+            // Hover animation pulse effect
+            document.querySelectorAll(".logic-topic").forEach(btn => {
+                btn.addEventListener("mouseenter", () => {
+                    gsap.to(btn, { scale: 1.1, duration: 0.3, ease: "power1.out" });
+                });
+                btn.addEventListener("mouseleave", () => {
+                    gsap.to(btn, { scale: 1, duration: 0.3, ease: "power1.out" });
+                });
+            });
+        }
+    </script>
+</head>
+<body>
+<h1>🧠 Logic Building Topics</h1>
+<div>
+    <a class="logic-topic" onclick="openLogic('patterns')">Pattern Programs</a>
+    <a class="logic-topic" onclick="openLogic('math')">Math Logic</a>
+    <a class="logic-topic" onclick="openLogic('strings')">String Logic</a>
+    <a class="logic-topic" onclick="openLogic('arrays')">Array Logic</a>
+    <a class="logic-topic" onclick="openLogic('tracing')">Output Tracing</a>
+</div>
+</body>
+</html>

@@ -1,0 +1,229 @@
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>Java Practice</title>-->
+<!--    <style>-->
+<!--        body {-->
+<!--            font-family: Arial, sans-serif;-->
+<!--            background: #f0f2f5;-->
+<!--            padding: 20px;-->
+<!--        }-->
+<!--        .container {-->
+<!--            max-width: 900px;-->
+<!--            margin: auto;-->
+<!--            background: #fff;-->
+<!--            padding: 20px;-->
+<!--            border-radius: 10px;-->
+<!--            box-shadow: 0 4px 12px rgba(0,0,0,0.1);-->
+<!--        }-->
+<!--        textarea {-->
+<!--            width: 100%;-->
+<!--            height: 250px;-->
+<!--            font-family: monospace;-->
+<!--            font-size: 14px;-->
+<!--            margin-bottom: 10px;-->
+<!--            border-radius: 6px;-->
+<!--            border: 1px solid #ccc;-->
+<!--            padding: 10px;-->
+<!--            resize: none;-->
+<!--        }-->
+<!--        button {-->
+<!--            padding: 10px 18px;-->
+<!--            margin: 5px;-->
+<!--            border: none;-->
+<!--            border-radius: 6px;-->
+<!--            cursor: pointer;-->
+<!--            font-weight: bold;-->
+<!--        }-->
+<!--        #runBtn { background: #28a745; color: #fff; }-->
+<!--        #hintBtn { background: #007bff; color: #fff; }-->
+<!--        #nextBtn { background: #ffc107; color: #000; display: none; }-->
+<!--        #output {-->
+<!--            background: #212529;-->
+<!--            color: #f8f9fa;-->
+<!--            padding: 15px;-->
+<!--            border-radius: 6px;-->
+<!--            white-space: pre-wrap;-->
+<!--            margin-top: 10px;-->
+<!--            min-height: 100px;-->
+<!--        }-->
+<!--        h2 { color: #333; }-->
+<!--    </style>-->
+<!--</head>-->
+<!--<body>-->
+<!--<div class="container">-->
+<!--    <h2>Java Practice Problem</h2>-->
+<!--    <p><b>Problem:</b> Swap two numbers without using a third variable.</p>-->
+<!--    <p><b>Constraint:</b> Input integers only.</p>-->
+<!--    <button id="hintBtn">Show Hint</button>-->
+<!--    <p id="hint" style="display:none; color: #555;">-->
+<!--        Hint: Use addition and subtraction or XOR method.-->
+<!--    </p>-->
+
+<!--    <textarea id="codeArea">-->
+<!--// Write your code here-->
+<!--public class Main {-->
+<!--    public static void main(String[] args) {-->
+<!--        int a = 5, b = 10;-->
+
+<!--        // TODO: swap values without third variable-->
+
+<!--        System.out.println("a=" + a + ", b=" + b);-->
+<!--    }-->
+<!--}-->
+<!--    </textarea>-->
+<!--    <br>-->
+<!--    <button id="runBtn">Run Code</button>-->
+<!--    <button id="nextBtn">Next Question</button>-->
+
+<!--    <h3>Output:</h3>-->
+<!--    <div id="output">Your output will appear here...</div>-->
+<!--</div>-->
+
+<!--<script>-->
+<!--    document.getElementById("hintBtn").onclick = () => {-->
+<!--        let hint = document.getElementById("hint");-->
+<!--        hint.style.display = hint.style.display === "none" ? "block" : "none";-->
+<!--    };-->
+
+<!--    document.getElementById("runBtn").onclick = async () => {-->
+<!--        const code = document.getElementById("codeArea").value;-->
+
+<!--        let res = await fetch("JavaPracticeServlet", {-->
+<!--            method: "POST",-->
+<!--            headers: { "Content-Type": "application/x-www-form-urlencoded" },-->
+<!--            body: "code=" + encodeURIComponent(code)-->
+<!--        });-->
+
+<!--        let text = await res.text();-->
+<!--        document.getElementById("output").textContent = text;-->
+
+<!--        if (text.includes("a=10") && text.includes("b=5")) {-->
+<!--            document.getElementById("nextBtn").style.display = "inline-block";-->
+<!--        }-->
+<!--    };-->
+
+<!--    document.getElementById("nextBtn").onclick = () => {-->
+<!--        alert("Next question will load here...");-->
+<!--    };-->
+<!--</script>-->
+<!--</body>-->
+<!--</html>-->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Java Practice</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #f0f2f5; padding: 20px; }
+        .container { max-width: 900px; margin: auto; background: #fff; padding: 20px; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        textarea { width: 100%; height: 250px; font-family: monospace; font-size: 14px; margin-bottom: 10px; border-radius: 6px; border: 1px solid #ccc; padding: 10px; resize: none; }
+        button { padding: 10px 18px; margin: 5px; border: none; border-radius: 6px; cursor: pointer; font-weight: bold; }
+        #runBtn { background: #28a745; color: #fff; }
+        #hintBtn { background: #007bff; color: #fff; }
+        #output { background: #212529; color: #f8f9fa; padding: 15px; border-radius: 6px; white-space: pre-wrap; margin-top: 10px; min-height: 100px; }
+        h2 { color: #333; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2>Java Practice Problem</h2>
+    <p id="problem"><b>Problem:</b> Swap two numbers without using a third variable.</p>
+    <button id="hintBtn">Show Hint</button>
+    <p id="hint" style="display:none; color: #555;">Hint: Use addition and subtraction or XOR method.</p>
+
+    <textarea id="codeArea">
+// Starter code will load here
+public class UserCode {
+    public static void main(String[] args) {
+        int a = 5, b = 10;
+
+        // TODO: swap values without third variable
+
+        System.out.println("a=" + a + ", b=" + b);
+    }
+}
+    </textarea>
+    <br>
+    <button id="runBtn">Run Code</button>
+
+    <h3>Output:</h3>
+    <div id="output">Your output will appear here...</div>
+</div>
+
+<script>
+    let currentQuestion = 0;
+
+    // Questions array
+    const questions = [
+        {
+            problem: "Swap two numbers without using a third variable.",
+            starterCode: "int a = 5, b = 10;\n// TODO: swap numbers\nSystem.out.println(\"a=\" + a + \", b=\" + b);",
+            correctOutput: "a=10, b=5",
+            hint: "Use addition and subtraction or XOR method."
+        },
+        {
+            problem: "Find the biggest of 3 numbers.",
+            starterCode: "int a = 10, b = 20, c = 15;\nint big;\n// TODO: find biggest\nbig = (a > b ? (a > c ? a : c) : (b > c ? b : c));\nSystem.out.println(\"Biggest=\" + big);",
+            correctOutput: "Biggest=20",
+            hint: "Use if-else or ternary operator to compare numbers."
+        },
+        {
+            problem: "Reverse a string.",
+            starterCode: "String s = \"Hello\";\nString rev = \"\";\n// TODO: reverse string\nfor(int i = s.length()-1; i >=0; i--) rev += s.charAt(i);\nSystem.out.println(\"Reversed=\" + rev);",
+            correctOutput: "Reversed=olleH",
+            hint: "Use a loop or StringBuilder reverse method."
+        }
+    ];
+
+    // Load question function
+    function loadQuestion(index) {
+        document.getElementById("problem").innerHTML = "<b>Problem:</b> " + questions[index].problem;
+        document.getElementById("codeArea").value = "public class UserCode {\n    public static void main(String[] args) {\n        "
+            + questions[index].starterCode + "\n    }\n}";
+        document.getElementById("hint").textContent = questions[index].hint;
+        document.getElementById("output").textContent = "Your output will appear here...";
+        document.getElementById("hint").style.display = "none";
+    }
+
+    // Initial load
+    loadQuestion(currentQuestion);
+
+    // Hint toggle
+    document.getElementById("hintBtn").onclick = () => {
+        let hint = document.getElementById("hint");
+        hint.style.display = hint.style.display === "none" ? "block" : "none";
+    };
+
+    // Run code button
+    document.getElementById("runBtn").onclick = async () => {
+        const code = document.getElementById("codeArea").value;
+
+        let res = await fetch("JavaPracticeServlet", {
+            method: "POST",
+            headers: { "Content-Type": "application/x-www-form-urlencoded" },
+            body: "code=" + encodeURIComponent(code)
+        });
+
+        let text = await res.text();
+        document.getElementById("output").innerHTML = text;
+
+        // -------- Robust output check: ignore extra JVM messages --------
+        let lines = text.replace(/<[^>]*>/g, "").split(/\r?\n/).map(l => l.trim()).filter(l => l.length > 0);
+        let lastLine = lines[lines.length - 1].replace(/\s+/g, "");
+        let correct = questions[currentQuestion].correctOutput.replace(/\s+/g, "");
+
+        if (lastLine.includes(correct)) {
+            currentQuestion++;
+            if (currentQuestion < questions.length) {
+                loadQuestion(currentQuestion); // next question immediately
+            } else {
+                document.getElementById("output").innerHTML += "\n🎉 All questions completed!";
+            }
+        }
+    };
+</script>
+</body>
+</html>

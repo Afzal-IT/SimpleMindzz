@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Python Quiz Levels</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #f2f2f2;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start; /* upper center */
+            padding-top: 60px;
+            margin: 0;
+        }
+
+        .container {
+            background: #fff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            text-align: center;
+            width: 500px;
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        p {
+            font-size: 18px;
+            margin-bottom: 15px;
+            color: #444;
+        }
+
+        label {
+            font-size: 16px;
+            margin-right: 5px;
+        }
+
+        select {
+            padding: 5px;
+            font-size: 14px;
+        }
+
+        .level-container {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .level-box {
+            padding: 10px 25px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            border: none;
+            transition: 0.2s;
+        }
+
+        .easy {
+            background-color: #d4edda;
+            color: #155724;
+        }
+
+        .medium {
+            background-color: #fff3cd;
+            color: #856404;
+        }
+
+        .hard {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+
+        .level-box:hover {
+            opacity: 0.8;
+        }
+    </style>
+
+    <script>
+        // ✅ Updated: Open quiz in same page instead of new tab
+        function openPythonQuiz(level) {
+            const timer = document.getElementById("timer").value;
+            window.location.href = "pyservlet?level=" + level + "&timer=" + timer;
+        }
+    </script>
+</head>
+<body>
+<div class="container">
+    <h1>Concept: Python</h1>
+    <p>Select Difficulty Level:</p>
+
+    <div>
+        <label for="timer">Timer:</label>
+        <select id="timer">
+            <option value="off">Off</option>
+            <option value="on">On</option>
+        </select>
+    </div>
+
+    <div class="level-container">
+        <button class="level-box easy" onclick="openPythonQuiz('easy')">Easy</button>
+        <button class="level-box medium" onclick="openPythonQuiz('medium')">Medium</button>
+        <button class="level-box hard" onclick="openPythonQuiz('hard')">Hard</button>
+    </div>
+</div>
+</body>
+</html>
